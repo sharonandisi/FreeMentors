@@ -7,8 +7,9 @@ body {
 }
 body {
  font: 100% / 1.414 "Open sans", "Trebuchet MS", arial, sans-serif;
- color: #6b8d9f;
+ color: #132f45;
  background: #f1f1f1;
+ background-image: url(../assets/mentor3.jpeg);
 }
 a,
 input[type="submit"],
@@ -220,7 +221,7 @@ label[for="checkbox"] {
  font-weight: 700;
  text-align: center;
  color: #fff;
- background-color: #2196f3;
+ background-color: #132f45;
  border: 0;
  border-radius: 2px;
  cursor: pointer;
