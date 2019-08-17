@@ -1,1 +1,74 @@
-@import url('https://')
+
+
+body {
+    font-family: poppins;
+    overflow-x: hidden;
+
+
+
+}
+
+.navbar {
+  overflow: hidden;
+  background-color:#132f45;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+.navbar h2 {
+    color: white;
+    display: inline;
+    font-family: poppins;
+    justify-content: center;
+    left: 5%;
+    right: 15%;
+    transform: translate(5%, 15%)
+}
+
+.nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0%;
+    left: 0;
+    background-color:#132f45;
+    opacity: 0.3;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.7s;
+}
+
+.nav a {
+    display: block;
+    padding: 20px 30px;
+    font-size: 25px;
+    text-decoration: none;
+    color: #ccc;
+    text-transform: uppercase;
+}
+
+.nav a:hover {
+    color: #fff;
+    transition: 0.4s;
+
+}
+
+.nav .close {
+    position: absolute;
+    top: 0;
+    right: 22px;
+    margin-left: 50px;
+    font-size: 30px;
+}
+
+.slide a {
+    color:white;
+    font-size: 36px;
+}
+
+#content {
+    padding: 20px;
+    transition: margin-left 0.7s;
+    overflow: hidden;
+}
