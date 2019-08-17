@@ -1,13 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="../css/home.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js">
+    </script>
+    <link rel="stylesheet" href="home.css">
 </head>
+
 <body>
-    
+    <div id="content">
+        <span class="slide">
+            <a href="#" onclick="openSlideMenu()">
+                <i class="fas fa-bars"></i>
+            </a>
+        </span>
+        <div id="menu" class="nav">
+            <a href="#" class="close" onclick="closeSideMenu()">
+                <i class="fas fa-times"></i>
+            </a>
+            <a href="#">Home</a>
+            <a href="#">My Profile</a>
+            <a href="#">About</a>
+            <a href="#">Log Out</a>
+        </div>
+        <h1>FREE MENTORS</h1>
+    </div>
+
+    <script>
+        function openSlideMenu() {
+            document.getElementById('menu').style.width = '250px';
+            document.getElementById('content').style.marginLeft = '250px';
+
+        }
+         function closeSlideMenu() {
+                document.getElementById('menu').style.width = '0';
+                document.getElementById('content').style.marginLeft = '0';
+
+            }
+    </script>
 </body>
+
 </html>
