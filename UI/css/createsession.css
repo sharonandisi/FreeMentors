@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.navbar {
+  overflow: hidden;
+  background-color:#132f45;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+.navbar h2 {
+    color: white;
+    display: inline;
+    font-family: poppins;
+    justify-content: center;
+    left: 5%;
+    right: 15%;
+    transform: translate(5%, 15%)
+}
+
+.nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0%;
+    left: 0;
+    background-color:#132f45;
+    opacity: 0.9;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.7s;
+}
+
+.nav a {
+    display: block;
+    padding: 20px 30px;
+    font-size: 25px;
+    text-decoration: none;
+    color: #ccc;
+    text-transform: uppercase;
+}
+
+.nav a:hover {
+    color: #fff;
+    transition: 0.4s;
+
+}
+
+.nav .close {
+    position: absolute;
+    top: 0;
+    right: 22px;
+    margin-left: 50px;
+    font-size: 30px;
+}
+
+.slide a {
+    color:white;
+    font-size: 36px;
+}
+
+#content {
+    padding: 20px;
+    transition: margin-left 0.7s;
+    overflow: hidden;
+}
+
+body{
+    background: url('../assets/mentor.jpeg') no-repeat top center;
+    background-size: cover;
+    height: 100vh;
+
+}
+
+.wrapper{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    padding: 0 20px;
+}
+
+.contact-form{
+    max-width: 550px;
+    margin: 0 auto;
+    background: rgba(0,0,0,0.8);
+    padding: 30px;
+    border-radius: 5px;
+    display: flex;
+    box-shadow: 0 0 10px rgba(0,0,0,0.13_);
+
+}
+
+.input-fields{
+    display: flex;
+    flex-direction: column;
+    margin-right: 4%;
+}
+
+.input-fields,
+.msg{
+    width:48%;   
+}
+
+.input-fields .input, 
+.msg textarea{
+    margin: 10px 0 ;
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid #c5ecfd;
+    padding: 10px;
+    color: #c5ecfd;
+    width: 100%
+
+}
+
+.msg textarea{
+    height: 212px;
+
+}
+
+::-webkit-input-placeholder {
+    color: #c5ecfd;
+}
+::-moz-input-placeholder {
+    color: #c5ecfd;
+}
+::-moz-input-placeholder {
+    color: #c5ecfd;
+}
+::-ms-input-placeholder {
+    color: #c5ecfd;
+}
+
+.btn{
+    background: #39b7dd;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* footer */
+footer {
+  background-color: #333;
+  padding: .75rem;
+  color: white;
+  text-align: center;
+  font-size: .75rem;
+}
+
+@media screen and (max-width: 600px){
+    .contact-form{
+        flex-direction: column;
+    }
+    .msg textarea{
+        height: 80px;    
+    }
+    .input-fields,
+    .msg{
+        width: 100%;
+    }
+}
