@@ -5,11 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="font/css/font-awesome.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js">
+    </script>
 </head>
 <body>
-    <table>
-        <tr>
-            <td><h1>REGISTERED USERS TABLE</h1></td>
+    <div id="content">
+        <div class="navbar">
+            <span class="slide">
+                <a href="#" onclick="openSlideMenu()">
+                    <i class="fas fa-bars"></i>
+                </a>
+                <h2>FREE MENTORS</h2>
+            </span>
+    
+        </div>
+        <div id="menu" class="nav">
+            <a href="#" class="close" onclick="closeSlideMenu()">
+                <i class="fas fa-times"></i>
+            </a>
+            <a href="../templates/home.html">Home</a>
+            <a href="../templates/index.html">Log Out</a>
+        </div>
+    
+    </div>
+   
+    <table align="center">
+        <tr id="one">
+            <td id="header"><h3>REGISTERED USERS TABLE</h3></td>
         </tr>
         <tr>
             <th>Firstname</th>
@@ -19,7 +43,9 @@
             <th>occupation/studyarea</th>
             <th>username</th>
             <th>profile image</th>
+            <th>mentor</th>
             <th>status</th>
+
         </tr>
         <tr>
             <td>Sharon</td>
@@ -29,7 +55,8 @@
             <td>Software engineering</td>
             <td>shayandisi</td>
             <td><img src="../assets/mentor.jpeg" alt="shay" height="25px" width="25px"></td>
-            <td><button>enable</button></td>
+            <td><input id="myCheckbox" type="checkbox" /></td>
+            <td><button id="myButton" disabled>enabled</button></td>
         </tr>
         <tr>
             <td>Michelle</td>
@@ -39,7 +66,8 @@
             <td>Lawyer</td>
             <td>michelleobama</td>
             <td><img src="../assets/adichie.jpeg" alt="shay" height="25px" width="25px"></td>
-            <td><button>enable</button></td>
+            <td><input id="myCheckbox" type="checkbox" /></td>
+            <td><button id="myButton" disabled>enabled</button></td>
         </tr>
         <tr>
             <td>Kattie</td>
@@ -49,7 +77,8 @@
             <td>Author</td>
             <td>kattiekay</td>
             <td><img src="../assets/home.jpeg" alt="shay" height="25px" width="25px"></td>
-            <td><button>enable</button></td>
+            <td><input id="myCheckbox" type="checkbox" /></td>
+            <td><button id="myButton" disabled>enabled</button></td>
         </tr>
         <tr>
             <td>Trevor</td>
@@ -59,7 +88,8 @@
             <td>Comedian</td>
             <td>trevornoah</td>
             <td><img src="../assets/trevor.jpeg" alt="shay" height="25px" width="25px"></td>
-            <td><button>enable</button></td>
+            <td><input id="myCheckbox" type="checkbox" /></td>
+            <td><button id="myButton" disabled>enabled</button></td> 
         </tr>
         <tr>
             <td>Trevor</td>
@@ -69,7 +99,8 @@
             <td>Comedian</td>
             <td>trevornoah</td>
             <td><img src="../assets/trevor.jpeg" alt="shay" height="25px" width="25px"></td>
-            <td><button>enable</button></td>
+            <td><input id="myCheckbox" type="checkbox" /></td>
+            <td><button id="myButton" disabled>enabled</button></td>
         </tr>
         <tr>
             <td>Micheal</td>
@@ -79,8 +110,8 @@
             <td>Pastor</td>
             <td>michealtodd</td>
             <td><img src="../assets/trevor.jpeg" alt="shay" height="25px" width="25px"></td>
-            <td><button>enable</button></td>
-        </tr>
+            <td><input id="myCheckbox" type="checkbox" /></td>
+            <td><button id="myButton" disabled>enabled</button></td>
         <tr>
             <td>Florence</td>
             <td>Sitati</td>
@@ -89,8 +120,33 @@
             <td>CEO</td>
             <td>flojo_design</td>
             <td><img src="../assets/trevor.jpeg" alt="shay" height="25px" width="25px"></td>
-            <td><button>enable</button></td>
+            <td><input id="myCheckbox" type="checkbox" /></td>
+            <td><button id="myButton" disabled>enabled</button></td>
         </tr>
     </table>
+
+<footer>
+    <p>&copy; 2019. Free Mentors.</p>
+</footer>
+
+    <script>
+        $(document).ready(function () {
+                $("#myCheckbox").click(function () {
+                    $("#myButton").prop("disabled", !$("#myCheckbox").prop("checked"));
+                })
+            });
+
+
+             function openSlideMenu() {
+                    document.getElementById('menu').style.width = '250px';
+                    document.getElementById('content').style.marginLeft = '250px';
+
+                }
+                function closeSlideMenu() {
+                    document.getElementById('menu').style.width = '0';
+                    document.getElementById('content').style.marginLeft = '0';
+
+                }
+    </script>
 </body>
 </html>
