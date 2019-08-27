@@ -1,0 +1,12 @@
+language: node_js;
+node_js: 
+  - "stable"
+install:
+  - npm i
+cache: 
+  directories:
+    - "$HOME/.npm"
+script:
+  - npm run start-test 
+  
+after_success: npm run coveralls
