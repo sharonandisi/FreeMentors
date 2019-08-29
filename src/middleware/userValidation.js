@@ -15,6 +15,12 @@ class Validations {
           .max(15)
           .required()
           .error(() => 'Lastname is required with a min of 3 chars and no special chars or numbers'),
+        password: Joi.string()
+          .min(5)
+          .max(15)
+          .alphanum()
+          .required()
+          .error(() => 'Password is a required field with a min of 5 chars and no special chars'),
         address: Joi.string()
           .alphanum()
           .min(5)
@@ -30,6 +36,11 @@ class Validations {
           .max(50)
           .required()
           .error(() => 'Occupation is a required field with a min of 3 chars with no special chars and numbers'),
+        bio: Joi.string()
+          .min(5)
+          .max(50)
+          .required()
+          .error(() => 'Bio is a required field with a min of 5 chars with no special chars or numbers'),
         expertise: Joi.string()
           .min(5)
           .max(50)

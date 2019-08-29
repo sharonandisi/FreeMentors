@@ -8,7 +8,7 @@ const User = {
      */
 
   create(req, res) {
-    if(!req.body.firstname && !req.body.lastname && !req.body.email && !req.body.password && !req.body.occupation && !req.body.expertise && !req.body.mentorstatus && !req.body.is_Admin) {
+    if (!req.body.firstname && !req.body.lastname && !req.body.email && !req.body.password && !req.body.address && !req.body.bio && !req.body.occupation && !req.body.expertise && !req.body.mentorstatus && !req.body.is_Admin) {
       return res.status(400).json({
         status: 400,
         error: 'All fields are required',

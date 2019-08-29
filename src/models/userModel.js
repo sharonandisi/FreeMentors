@@ -32,4 +32,4 @@ class User {
     return newUser;
   }
 }
-export default User;
+export default new User();
