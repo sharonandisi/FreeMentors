@@ -227,7 +227,7 @@ describe('/Auth', () => {
           password: '123shay',
         })
         .end((err, res) => {
-          res.should.have.status(201);
+          res.should.have.status(200);
           if (err) return done();
           done();
         });
@@ -243,7 +243,7 @@ describe('/Auth', () => {
         .end((err, res) => {
           res.should.have.status(400);
           expect(res.body.error)
-            .equals('Email is a required and must be valid');
+            .equals('Email is a required field and must be valid');
           if (err) return done();
           done();
         });

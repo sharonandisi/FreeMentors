@@ -70,7 +70,7 @@ class Validations {
         email: Joi.string()
           .email({
             minDomainSegments:2 }).required()
-          .error(() => 'Email required field and must be valid'),
+          .error(() => 'Email is a required field and must be valid'),
         password: Joi.string()
           .min(5)
           .max(15)
