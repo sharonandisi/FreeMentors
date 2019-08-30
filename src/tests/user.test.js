@@ -248,5 +248,21 @@ describe('/Auth', () => {
           done();
         });
     });
+
+    it('should not sign in a user missing a password', (done) => {
+      chai.request(app)
+        .post('/api/v1/auth/signin')
+        .send({
+          email: 'sharonandisi@gmail.com',
+          password: '',
+        })
+        .end((err, res) => {
+          res.should.have.status(400);
+          expect(res.body.error)
+            .equals('Password is a required field with a min of 5 chars and no special chars');
+          if (err) return done();
+          done();
+        });
+    });
   });
 });
