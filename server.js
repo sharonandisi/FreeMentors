@@ -7,7 +7,7 @@ import router from './src/routes/index';
 
 
 const app = express();
-const port = process.env.PORT || 6500;
+const port = process.env.PORT || 9500;
 app.use(express.json());
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
