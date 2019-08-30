@@ -1,5 +1,11 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+import config from '../../config';
+
+
+dotenv.config();
+const env = process.env.NODE_ENV;
 
 const authHelper = {
   /**
@@ -40,7 +46,7 @@ const authHelper = {
       */
 
   generateToken(payload) {
-    const token = jwt.sign(payload, process.env.SECRET, { expiresIn: '7d' });
+    const token = jwt.sign(payload, process.env.SECRET);
     return token;
   },
 };
