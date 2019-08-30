@@ -31,5 +31,17 @@ class User {
     this.users.push(newUser);
     return newUser;
   }
+  /**
+   * @param {uuid} id
+   * @returns {object} user object
+   */
+
+  findOne(id) {
+    return this.users.find((user) => user.id === id);
+  }
+
+  findByEmail(email) {
+    return this.users.find((user) => user.email === email);
+  }
 }
 export default new User();
