@@ -58,19 +58,28 @@ const User = {
     if (!user) {
       return res.status(404).json({
         status: 404,
-        error: 'User not found'
+        error: 'User not found',
       });
     }
-    if (req.body.password !== user.password) {
-      return res.status(401).json({
-        status: 401,
-        error: 'Invalid credentials',
+    if (!req.body.email || !req.body.password) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Some values are missing',
       });
     }
+    if (!authHelper.isValidEmail(req.body.email)) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Please enter a valid email address',
+      });
+    }
+
+    const token = authHelper.generateToken(user.id);
     return res.status(200).json({
       status: 200,
       message: 'user is successfully logged in',
       data: {
+        token,
         id: user.id,
         firstname: user.firstname,
         lastname: user.lastname,
