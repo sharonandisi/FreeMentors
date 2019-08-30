@@ -216,4 +216,37 @@ describe('/Auth', () => {
         });
     });
   });
+
+  describe('/POST signin', () => {
+
+    it('should successfully sign up a user', (done) => {
+      chai.request(app)
+        .post('/api/v1/auth/signin')
+        .send({
+          email: 'sharonandisi@gmail.com',
+          password: '123shay',
+        })
+        .end((err, res) => {
+          res.should.have.status(201);
+          if (err) return done();
+          done();
+        });
+    });
+
+    it('should not sign in a user missing an email address', (done) =>{
+      chai.request(app)
+        .post('/api/v1/auth/signin')
+        .send({
+          email: '',
+          password: '123shay',
+        })
+        .end((err, res) => {
+          res.should.have.status(400);
+          expect(res.body.error)
+            .equals('Email is a required and must be valid');
+          if (err) return done();
+          done();
+        });
+    });
+  });
 });
