@@ -89,6 +89,16 @@ const User = {
       },
     });
   },
+
+  changeMentor(req, res) {
+    const { userid } = req.params;
+    const result = User.changeMentor(userid);
+    return res.status(200).json({
+      status: 200,
+      message: 'User successfully changed to mentor',
+      data: result,
+    });
+  },
 };
 
 export default User;
