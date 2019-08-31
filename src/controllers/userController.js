@@ -1,6 +1,5 @@
-import bcrypt from 'bcrypt';
 import UserModel from '../models/userModel';
-import authHelper from "../helpers/auth";
+import authHelper from '../helpers/auth';
 
 
 const User = {
@@ -89,6 +88,12 @@ const User = {
       },
     });
   },
+
+  /**
+ * @param {object} req
+ * @param {object} res
+ * @returns {object} user object
+ */
 
   changeMentor(req, res) {
     const { userid } = req.params;
