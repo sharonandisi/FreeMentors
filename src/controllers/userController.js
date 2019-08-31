@@ -2,14 +2,14 @@ import UserModel from '../models/userModel';
 import authHelper from '../helpers/auth';
 
 
-const User = {
+class User {
   /**
      * @param {object} req
      * @param {object} res
      * @returns {object} user object
      */
 
-  create(req, res) {
+  static async create(req, res) {
     const {
       firstname, lastname, email, password, address, occupation, bio, expertise,
     } = req.body;
@@ -44,7 +44,7 @@ const User = {
         is_Admin: user.is_Admin,
       },
     });
-  },
+  }
 
   /**
    * @param {object} req
@@ -52,7 +52,7 @@ const User = {
    * @returns {object} user object
    */
 
-  userLogin(req, res) {
+  static async userLogin(req, res) {
     const user = UserModel.findByEmail(req.body.email);
     if (!user) {
       return res.status(404).json({
@@ -87,7 +87,7 @@ const User = {
         mentorstatus: user.mentorstatus,
       },
     });
-  },
+  }
 
   /**
  * @param {object} req
@@ -95,15 +95,24 @@ const User = {
  * @returns {object} user object
  */
 
-  changeMentor(req, res) {
-    const { userid } = req.params;
-    const result = User.changeMentor(userid);
-    return res.status(200).json({
-      status: 200,
-      message: 'User successfully changed to mentor',
-      data: result,
-    });
-  },
-};
+  static async changeMentor(req, res) {
+    const userid = UserModel.findOne(req.params.id);
+    console.log(userid);
+    if (userid) {
+      const result = UserModel.changeMentor(req.params.id, req.body);
+      return res.status(200).json({
+        status: 200,
+        message: 'User successfully changed to mentor',
+        data: result,
+      });
+    }
+    if (!userid) {
+      return res.status(404).json({
+        status: 404,
+        error: 'Invalid user',
+      });
+    }
+  }
+}
 
 export default User;

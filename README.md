@@ -5,4 +5,4 @@ Free Mentors is a social initiative where accomplished professionals become role
 
 [![Coverage Status](https://coveralls.io/repos/github/sharonandisi/FreeMentors/badge.svg?branch=develop)](https://coveralls.io/github/sharonandisi/FreeMentors?branch=develop)
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/4a86d496d85232c6bb19/maintainability)](https://codeclimate.com/github/sharonandisi/FreeMentors/maintainability)
