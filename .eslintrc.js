@@ -4,30 +4,26 @@ module.exports = {
         "browser": true,
             "es6": true
     },
-    "extends": [
-        "airbnb-base"
-    ],
-        "globals": {
-        "Atomics": "readonly",
-            "SharedArrayBuffer": "readonly",
-                "describe": "readonly",
-                    "it": "readonly",
-                        "before": "readonly",
-                            "after": "readonly"
-    },
-    "parserOptions": {
-        "ecmaVersion": 2018,
-            "sourceType": "module"
-    },
+    "extends": "airbnb-base",
+    //     "globals": {
+    //     "Atomics": "readonly",
+    //         "SharedArrayBuffer": "readonly",
+    //             "describe": "readonly",
+    //                 "it": "readonly",
+    //                     "before": "readonly",
+    //                         "after": "readonly"
+    // },
+    // "parserOptions": {
+    //     "ecmaVersion": 2018,
+    //         "sourceType": "module"
+    // },
     "rules": {
         "comma-dangle": "warn",
-            "no-unused-vars": [
-                "error",
-                {
-                    "vars": "local",
-                    "args": "none",
-                    "mocha/no-exclusive-tests": "error"
-                }
-            ]
+        "import/no-named-as-default": 0 
+    }, 
+    "parser":  "babel-eslint",
+        "rules": {
+            "strict": 0
     }
+
 };
