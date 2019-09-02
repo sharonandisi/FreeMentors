@@ -16,6 +16,7 @@ const admin = (req, res, next) => {
       occupation: 'Admin',
       expertise: 'admin',
       bio: 'I am an admin',
+      is_Admin: 'true',
     });
   }
   next();
