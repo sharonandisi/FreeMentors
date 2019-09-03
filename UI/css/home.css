@@ -117,15 +117,16 @@ p, a {
 }
 
 .hero > h1 {
-  font-size: 4rem;
+  font-size: 3rem;
   padding-bottom: 1rem;
-  color: black;
+  color: white;
 }
 
 .hero > article > p {
   font-size: 1.5rem;
   font-weight: 600;
   color: black;
+  background-color: white;
 }
 
 .hero > article > a {
