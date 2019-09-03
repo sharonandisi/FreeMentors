@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js">
+    </script>
     <title>Document</title>
 </head>
 <body>
@@ -28,6 +32,142 @@
         </div>
     
     </div>
+
+    <div id="content">
+        <div class="navbar">
+            <span class="slide">
+                <a href="#" onclick="openSlideMenu()">
+                    <i class="fas fa-bars"></i>
+                </a>
+                <h2>FREE MENTORS</h2>
+            </span>
     
+        </div>
+        <div id="menu" class="nav">
+            <a href="#" class="close" onclick="closeSlideMenu()">
+                <i class="fas fa-times"></i>
+            </a>
+            <a href="../templates/home.html">Home</a>
+            <a href="../templates/profile.html">My Profile</a>
+            <a href="../templates/mentors.html">Mentors</a>
+            <a href="../templates/index.html">Log Out</a>
+        </div>
+    
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <article class="blog-card">
+                    <div class="blog-card__background">
+                        <div class="card__background--wrapper">
+                            <div class="card__background--main"
+                                style="background-image: url('https://www.gannett-cdn.com/presto/2018/12/11/PMJS/6d6048e3-56f9-46e4-b016-421d961dd0f7-MichelleObama_8x10.jpg?crop=2399,1350,x0,y149&width=3200&height=1680&fit=bounds');">
+                                <div class="card__background--layer"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-card__head">
+                        <span class="date__box">
+                            <span class="date__day">Michelle</span>
+                            <span class="date__month">Obama</span>
+                        </span>
+                    </div>
+                    <div class="blog-card__info">
+                       <p> 
+                        <ul style="list-style-type:none;" class=list>
+                            <li>FIRSTNAME: Michelle Lavaughn </li>
+                            <li>LASTNAME: Obama</li>
+                            <li>OCCUPATION: Lawyer</li>
+                            <li>EXPERTISE: Former first lady</li>
+                            <li class="bio">BIO:Raised on the South Side of Chicago, Illinois, Obama is a graduate of Princeton University
+                                and Harvard Law School. In
+                                her early legal career, she worked at the law firm Sidley Austin, where she met Barack Obama.</li>
+                            <li><input type="button" class="Mybutton" value="edit profile"></li>
+                        </ul>
+                        </p>
+                        
+                    </div>
+                </article>
+            </div>
+        </div>
+
+    </div>
+    <div class="container">
+        <main class="grid">
+            <article>
+                <img src="https://picsum.photos/600/400?image=1083" alt="Sample photo">
+            <div class="text">  
+                <h3>On Becoming</h3>
+                <ul style="list-style-type:none;">
+                <li>NAME: SHAY QWERTY</li>
+                <li>EMAIL: shay@gmail.com</li>
+                <li>PHONE: 0987675432</li>
+                <li>SUBJECT: On Becoming</li>
+                <li>MESSAGE: I would love to request a session</li>
+                </ul>
+                <input class = "Mybutton" type="button" value="Accept"> <input class="Mabutton" type="button" value="Decline">
+            </div>
+            </article>
+            <article>
+                <img src="https://picsum.photos/600/400?image=1083" alt="Sample photo">
+                <div class="text">
+                    <h3>On Becoming</h3>
+                    <ul style="list-style-type:none;">
+                        <li>NAME: SHAY QWERTY</li>
+                        <li>EMAIL: shay@gmail.com</li>
+                        <li>PHONE: 0987675432</li>
+                        <li>SUBJECT: On Becoming</li>
+                        <li>MESSAGE: I would love to request a session</li>
+                    </ul>
+                    <input class="Mybutton" type="button" value="Accept"> <input class="Mabutton" type="button" value="Decline">
+                </div>
+            </article>
+            <article>
+                <img src="https://picsum.photos/600/400?image=1083" alt="Sample photo">
+                <div class="text">
+                    <h3>On Becoming</h3>
+                    <ul style="list-style-type:none;">
+                        <li>NAME: SHAY QWERTY</li>
+                        <li>EMAIL: shay@gmail.com</li>
+                        <li>PHONE: 0987675432</li>
+                        <li>SUBJECT: On Becoming</li>
+                        <li>MESSAGE: I would love to request a session</li>
+                    </ul>
+                    <input class="Mybutton" type="button" value="Accept"> <input class="Mabutton" type="button" value="Decline">
+                </div>
+            </article>
+            <article>
+                <img src="https://picsum.photos/600/400?image=1083" alt="Sample photo">
+                <div class="text">
+                    <h3>On Becoming</h3>
+                    <ul style="list-style-type:none;">
+                        <li>NAME: SHAY QWERTY</li>
+                        <li>EMAIL: shay@gmail.com</li>
+                        <li>PHONE: 0987675432</li>
+                        <li>SUBJECT: On Becoming</li>
+                        <li>MESSAGE: I would love to request a session</li>
+                    </ul>
+                    <input class="Mybutton" type="button" value="Accept"> <input class="Mabutton" type="button" value="Decline">
+                </div>
+            </article>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2019. Free Mentors.</p>
+    </footer>
+
+<script>
+    function openSlideMenu() {
+        document.getElementById('menu').style.width = '250px';
+        document.getElementById('content').style.marginLeft = '250px';
+
+    }
+    function closeSlideMenu() {
+        document.getElementById('menu').style.width = '0';
+        document.getElementById('content').style.marginLeft = '0';
+
+    }
+</script>
 </body>
 </html>
