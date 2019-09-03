@@ -19,7 +19,7 @@ p, a {
 }
 
 .navbar {
-  overflow: hidden;
+  
   background-color:#132f45;
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
@@ -83,7 +83,11 @@ p, a {
     overflow: hidden;
 }
 
-.wrapper a {
+.wrapper{
+  width: 100%;
+}
+
+.browse {
   background-color: maroon;
   text-decoration: none;
   color: white;
@@ -113,15 +117,16 @@ p, a {
 }
 
 .hero > h1 {
-  font-size: 4rem;
+  font-size: 3rem;
   padding-bottom: 1rem;
-  color: black;
+  color: white;
 }
 
 .hero > article > p {
   font-size: 1.5rem;
   font-weight: 600;
   color: black;
+  background-color: white;
 }
 
 .hero > article > a {

@@ -14,34 +14,33 @@
 
 <body>
     <div id="content">
-        <div class="navbar">
+        
+<main class="wrapper">
+    <div class="navbar">
         <span class="slide">
             <a href="#" onclick="openSlideMenu()">
                 <i class="fas fa-bars"></i>
             </a>
             <h2>FREE MENTORS</h2>
         </span>
-        
-        </div>
-        <div id="menu" class="nav">
-            <a href="#" class="close" onclick="closeSlideMenu()">
-                <i class="fas fa-times"></i>
-            </a>
-            <a href="../templates/home.html">Home</a>
-            <a href="../templates/profile.html">My Profile</a>
-            <a href="../templates/mentors.html">Mentors</a>
-            <a href="../templates/index.html">Log Out</a>
-        </div>
-        
+    
     </div>
-<main class="wrapper">
+    <div id="menu" class="nav">
+        <a href="#" class="close" onclick="closeSlideMenu()">
+            <i class="fas fa-times"></i>
+        </a>
+        <a href="../templates/home.html">Home</a>
+        <a href="../templates/profile.html">My Profile</a>
+        <a href="../templates/mentors.html">Mentors</a>
+        <a href="../templates/index.html">Log Out</a>
+    </div>
     <section class="hero">
-        <h1>Looking for a mentor?</h1>
+        <h1>Need a mentor?</h1>
         <article>
             <p>FREE MENTOR maintains the Mentoring Connector, the only national database of youth mentoring programs connecting volunteers
             to opportunities in their local communities.</p>
             <a href="../templates/mentors.html
-            ">Browse Mentors</a>
+            " class="browse">Browse Mentors</a>
         </article>
     </section>
     <section class="breweries" id="breweries">
@@ -60,7 +59,7 @@
                     Nice girls don't get the corner office. A mentoring session by Lois P Frankel.
                 </p>
                 <p><code>BY: LOIS P FRANKEL</code></p>
-                <a href="../templates/sessions.html">View Session</a>
+                <button class="browse" onclick="window.location.href='../templates/createsession.html'">ADD SESSION</a>
             </li>
             <li>
                 <figure>
@@ -75,7 +74,7 @@
                     The Quest for True Belonging and the Courage to Stand Alone
                 </p>
                 <p><code>BY: BRENE BROWN</code></p>
-                <a href="../templates/sessions.html">View session</a>
+            <button class="browse" onclick="window.location.href='../templates/createsession.html'">ADD SESSION</a>
             </li>
             <li>
                 <figure>
@@ -90,7 +89,7 @@
                     Confidence. We want it. We need it. But it can be maddeningly enigmatic and out of reach.
                 </p>
                 <p><code>BY: KATTIE KAY</code></p>
-                <a href="../templates/sessions.html">View session</a>
+            <button class="browse" onclick="window.location.href='../templates/createsession.html'">ADD SESSION</a>
             </li>
         </ul>
     </section>
