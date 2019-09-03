@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import jwt from 'jsonwebtoken';
-import User from '../models/userModel';
+import userModel from '../models/userModel';
 
 class Verify {
   /**
@@ -9,7 +9,7 @@ class Verify {
      */
 
   verifyUser(req, res, next) {
-    const user = User.findByEmail(req.body.email.trim());
+    const user = userModel.findByEmail(req.body.email.trim());
     if (user) {
       return res.status(400).json({
         status: 400,
@@ -20,7 +20,7 @@ class Verify {
   }
 
   verifyRegistereduser(req, res, next) {
-    const user = User.findByEmail(req.body.email.trim());
+    const user = userModel.findByEmail(req.body.email.trim());
     if (!user) {
       return res.status(400).json({
         status: 400,
@@ -32,7 +32,7 @@ class Verify {
 
   verifyexistingUser(req, res, next) {
     const userid = req.decoded.payload;
-    const user = User.findOne(userid);
+    const user = userModel.findOne(userid);
     if (!user) {
       return res.status(404).json({
         status: 404,
@@ -67,9 +67,9 @@ class Verify {
 
   verifyAdmin(req, res, next) {
     const id = req.decoded.payload;
-    const user = User.findOne(id);
+    const user = userModel.findAdmin();
 
-    if (!user.isAdmin) {
+    if (!user) {
       return res.status(403).json({
         status: 403,
         error: 'Access denied',

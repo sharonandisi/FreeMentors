@@ -41,9 +41,11 @@ class User {
         bio: user.bio,
         expertise: user.expertise,
         mentorstatus: user.mentorstatus,
-        is_Admin: user.is_Admin,
+        is_Admin: user.isAdmin,
       },
     });
+    
+   
   }
 
   /**
@@ -54,6 +56,7 @@ class User {
 
   static async userLogin(req, res) {
     const user = UserModel.findByEmail(req.body.email);
+    console.log(user)
     if (!user) {
       return res.status(404).json({
         status: 404,
@@ -96,22 +99,22 @@ class User {
  */
 
   static async changeMentor(req, res) {
-    const userid = UserModel.findOne(req.params.id);
-    console.log(userid);
-    if (userid) {
-      const result = UserModel.changeMentor(req.params.id, req.body);
+    const user = UserModel.findOne(req.params.id);
+    if (!user) {
+      return res.status(404).json({
+        status: 404,
+        message: 'Invalid user'
+      })
+    }
+    if (user) {
+      const updatedMentor = UserModel.changeMentor(req.params.id, req.body)
       return res.status(200).json({
         status: 200,
         message: 'User successfully changed to mentor',
-        data: result,
+        data: updatedMentor,
       });
     }
-    if (!userid) {
-      return res.status(404).json({
-        status: 404,
-        error: 'Invalid user',
-      });
-    }
+    
   }
 }
 
