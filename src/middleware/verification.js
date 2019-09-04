@@ -112,7 +112,6 @@ class Verify {
     }
     next();
   };
-  }
 }
 
 export default new Verify();
