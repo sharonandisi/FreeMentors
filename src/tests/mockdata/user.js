@@ -9,7 +9,20 @@ const User = {
         address: 'nairobi',
         occupation: 'mama',
         bio: 'I am a dev mama',
-        expertise: 'motherhood',]
+        expertise: 'motherhood',
+    },
+
+    user002: {
+        firstname: '',
+        lastname: 'andisi',
+        email: 'sharonandisi@gmail.com',
+        password: '123shay',
+        address: 'nairobi',
+        bio: 'mama simi',
+        occupation: 'developer',
+        expertise: 'software',
+        mentorstatus: 'false',
+        is_Admin: 'false',
     },
 
     admin: {
