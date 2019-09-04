@@ -28,6 +28,24 @@ class Session {
 
     }
 
+    static async acceptRequest(req, res){
+        const { sessionid } = req.params;
+
+        const { mentorid, menteeid, questions, menteeEmail, status } = Session.accept(sessionid);
+        res.status(200).json({
+            status: 200,
+            message: 'successful',
+            data: {
+                sessionid,
+                mentorid,
+                menteeid,
+                questions,
+                menteeEmail,
+                status,
+            },
+        });
+    };
+
 }
 
 export default Session;
