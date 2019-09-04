@@ -7,8 +7,8 @@ import testdata from './mockdata/user'
 import authHelper from '../helpers/auth';
 
 
-const users = userModel.users;
-const { expect } = chai;
+const users = User.users;
+const { expect, request } = chai;
 chai.should();
 chai.use(chaiHttp);
 

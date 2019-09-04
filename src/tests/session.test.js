@@ -5,7 +5,7 @@ import User from '../models/userModel';
 import '../../config';
 import testdata from './mockdata/user'
 import authHelper from '../helpers/auth';
-import Session from '../models/Session';
+import Session from '../models/sessionModel';
 
 chai.use(chaiHttp);
 const { expect,  request } = chai;
@@ -54,7 +54,7 @@ describe ('PATCH /api/v1/sessions/:sessionid', () => {
         token = authHelper.generateToken(mentorid);
 
         const { id: menteeid } = User.create({...testdata.user001});
-        const { questions } = data.session001;
+        const { questions } = testdata.session001;
         const newSession = Session.create({mentorid, menteeid, questions});
 
         sessionid = newSession.id;

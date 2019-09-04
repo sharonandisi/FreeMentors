@@ -1,5 +1,5 @@
 import userModel from '../models/userModel';
-import Session from '../models/Session';
+import session from '../models/sessionModel';
 
 class Session {
     /**
@@ -11,7 +11,7 @@ class Session {
     static async createsession(req, res) {
         const menteeid = req.decoded.payload;
         const { mentorid, questions } = req.body;
-        const { id: sessionid, status, menteeEmail } = Session.createsession({
+        const { id: sessionid, status, menteeEmail } = session.createsession({
             mentorid, questions, menteeid });
         res.status(201).json({
             status: 201,
@@ -31,7 +31,7 @@ class Session {
     static async acceptRequest(req, res){
         const { sessionid } = req.params;
 
-        const { mentorid, menteeid, questions, menteeEmail, status } = Session.accept(sessionid);
+        const { mentorid, menteeid, questions, menteeEmail, status } = session.accept(sessionid);
         res.status(200).json({
             status: 200,
             message: 'successful',

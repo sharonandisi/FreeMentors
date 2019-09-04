@@ -6,7 +6,7 @@ import '../../config';
 import testdata from './mockdata/user'
 import authHelper from '../helpers/auth';
 
-const users = userModel.users;
+const users = User.users;
 const { expect, request } = chai;
 chai.should();
 chai.use(chaiHttp);
@@ -298,14 +298,14 @@ describe('/Auth', () => {
     it('should not change roles of a non existant user', async () => {
       User.createAdmin({ ...testdata.admin });
       const admin = User.findByEmail(process.env.ADMIN_EMAIL);
-      token = generateToken(admin.id);
-      userId = 27;
+      token = authHelper.generateToken(admin.id);
+      userid = 2765786;
       const res = await execute();
-      expect(res).to.have.status(400);
+      expect(res).to.have.status(404);
     });
 
     it('should check for admin before allowing change of status', async () => {
-      const { user001 } = data;
+      const { user001 } = testdata;
       const user = User.create({ ...user001});
       token = authHelper.generateToken(user.id);
       userid = user.id;
@@ -314,7 +314,7 @@ describe('/Auth', () => {
     });
 
     it('should allow an admin to change a status',async () => {
-      const { user001 } = data;
+      const { user001 } = testdata;
       const user = User.create({ ...user001 });
       userid = user.id;
       User.createAdmin({ ...testdata.admin });
