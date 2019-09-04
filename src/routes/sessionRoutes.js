@@ -4,4 +4,4 @@ import Verify from "../middleware/verification";
 
 const router = express.Router();
 
-router.post('/signup', Verify.verifyauthenUser, Verify.verifymentor, Session.createsession);
+router.post('/sessions', Verify.verifyauthenUser, Verify.verifymentor, Session.createsession);
