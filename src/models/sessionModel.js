@@ -21,5 +21,22 @@ class Session {
        return newSession; 
     }
 
-    
+    findOne(id) {
+        return this.sessions.find(session => session.id === id);
+    }
+
+    findmenteeSession(id) {
+        return this.sessions.filter(session => session.menteeid === id);
+    }
+
+    findmentorSession(id) {
+        return this.sessions.filter(session => session.mentorid === id);
+    }
+
+    remove() {
+        this.sessions = [];
+    }
+
 }
+
+export default new Session();
