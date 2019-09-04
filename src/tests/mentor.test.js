@@ -1,11 +1,11 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../server';
-import userModel from '../models/userModel';
+import User from '../models/userModel';
 import '../../config';
 import testdata from './mockdata/user'
 import authHelper from '../helpers/auth';
-import User from '../controllers/userController';
+
 
 const users = userModel.users;
 const { expect } = chai;
@@ -29,24 +29,24 @@ describe('/GET  all mentors', () => {
     });
 
     it('should not get mentors if the user has an invalid token', async () => {
-        token = 'code';
-        const res = await exec();
+        token = 'sha23563rwe';
+        const res = await execute();
         expect(res).to.have.status(401);
     });
 
-    it('should notify a user if there are no mentors registered in the app', async () => {
+    it('should throw an error if there are no mentors found', async () => {
         const user = User.create({ ...testdata.user001 });
         token = authHelper.generateToken(user.id);
-        const res = await exec();
+        const res = await execute();
         expect(res).to.have.status(404);
     });
 
-    it('should get mentors in the app if the user is authenticated', async () => {
+    it('should get mentors if user is authenticated', async () => {
         const user = User.create({ ...testdata.user001 });
         token = authHelper.generateToken(user.id);
-        User.changeRole(user.id);
+        User.changeMentor(user.id);
 
-        const res = await exec();
+        const res = await execute();
         expect(res).to.have.status(200);
     });
 });
@@ -57,45 +57,46 @@ describe('GET /api/v1/mentors:mentorId', () => {
     });
 
     let token = '';
-    let mentorId = '';
+    let mentorid = '';
 
-    const exec = () => request(app)
-        .get(`/api/v1/mentors/${mentorId}`)
+    const execute = () => request(app)
+        .get(`/api/v1/mentors/${mentorid}`)
         .set('x-auth-token', token);
 
-    it('should not fetch a specific mentor if the user has no token', async () => {
+    it('should not get a specific mentor if the user has no token', async () => {
         const user = User.create({ ...data.user001 });
         const mentor = User.changeMentor(user.id);
         token = '';
-        mentorId = mentor.id;
-        const res = await exec();
+        mentorid = mentor.id;
+        const res = await execute();
         expect(res).to.have.status(401);
     });
 
-    it('should not fetch a specific mentor if the user has an invalid token', async () => {
+    it('shouldnt get a mentor when user has an invalid token', async () => {
         const user = User.create({ ...data.user001 });
         const mentor = User.changeMentor(user.id);
-        token = 'yes';
-        mentorId = mentor.id;
-        const res = await exec();
+        token = 'sigh';
+        mentorid = mentor.id;
+        const res = await execute();
         expect(res).to.have.status(401);
     });
 
-    it('should notify a user if the mentor does not exist', async () => {
+    it('should throw error if mentor does not exist', async () => {
         const user = User.create({ ...data.user001 });
-        token = User.changeMentor(user.id);
-        mentorId = '5';
-        const res = await exec();
+        const mentor = User.changeMentor(user.id);
+        token = 'sellah';
+        mentorid = '1002';
+        const res = await execute();
         expect(res).to.have.status(404);
     });
 
-    it('should fectch a specific mentor in the app if the user is authenticated', async () => {
+    it('should get a specific mentor if user is authenticated', async () => {
         const user = User.create({ ...data.user001 });
-        token = generateToken(user.id);
-        User.changeRole(user.id);
-        mentorId = user.id;
+        token = authHelper.generateToken(user.id);
+        const user =User.changeMentor(user.id);
+        mentorid = user.id;
 
-        const res = await exec();
+        const res = await execute();
         expect(res).to.have.status(200);
     });
 });
