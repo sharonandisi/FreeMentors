@@ -37,8 +37,8 @@ class User {
   */
 
   createAdmin(data) {
-
-    const newUser = {
+   
+    const admin = {
       id: uuid.v4(),
       firstname: data.firstname || '',
       lastname: data.lastname || '',
@@ -49,10 +49,10 @@ class User {
       occupation: data.occupation || '',
       expertise: data.expertise || '',
       mentorstatus: false,
-      is_Admin: true,
+      isAdmin: true,
     };
-    this.users.push(newUser);
-    return newUser;
+    this.users.push(admin);
+    return admin;
   }
   /**
    * @param {uuid} id
@@ -70,12 +70,12 @@ class User {
   changeMentor(id) {
     const user = this.findOne(id);
     const index = this.users.indexOf(user);
-    this.users[index].mentorstatus = 'mentor';
+    this.users[index].mentorstatus = true;
     return this.users[index];
   }
 
   findMentor() {
-    return this.users.filter((user) => user.mentorstatus === 'true');
+    return this.users.filter((user) => user.mentorstatus === true);
   }
 
   remove() {
@@ -83,7 +83,7 @@ class User {
   }
 
   findAdmin() {
-    return this.users.find((user) => user.is_Admin === 'true');
+    return this.users.find((user) => user.isAdmin === true);
   }
 }
 export default new User();

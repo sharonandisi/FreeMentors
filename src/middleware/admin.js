@@ -1,13 +1,14 @@
 import authHelper from '../helpers/auth';
-import User from '../models/userModel';
-import '../../.env';
+import userModel from '../models/userModel';
+import '../../config';
 
-const admin = (req, res, next) => {
-  const user = User.findAdmin();
 
+
+const createAdmin = (req, res, next) => {
+  const user = userModel.findAdmin();
   const hashpassword = authHelper.hashPassword(process.env.ADMIN_PASSWORD);
   if (!user) {
-    user.createAdmin({
+    userModel.createAdmin({
       firstname: 'admin',
       lastname: 'admin',
       email: process.env.ADMIN_EMAIL,
@@ -16,10 +17,11 @@ const admin = (req, res, next) => {
       occupation: 'Admin',
       expertise: 'admin',
       bio: 'I am an admin',
-      is_Admin: 'true',
+      mentorstatus: false,
+      isAdmin: true,
     });
   }
   next();
 };
 
-export default admin;
+export default createAdmin;
