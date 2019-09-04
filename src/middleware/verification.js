@@ -101,6 +101,18 @@ class Verify {
     }
     return next();
   }
+
+  verifysession(req, res, next) {
+    const result = Session.findOne(req.params.sessionid);
+    if (!result) {
+      return res.status(404).json({
+        status: 404,
+        error: 'This session does not exist',
+      });
+    }
+    next();
+  };
+  }
 }
 
 export default new Verify();
