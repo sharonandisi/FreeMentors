@@ -1,10 +1,13 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../server';
-import userModel from '../models/userModel';
+import User from '../models/userModel';
+import '../../config';
+import testdata from './mockdata/user'
+import authHelper from '../helpers/auth';
 
-const users = userModel.users;
-const { expect } = chai;
+const users = User.users;
+const { expect, request } = chai;
 chai.should();
 chai.use(chaiHttp);
 
@@ -265,4 +268,61 @@ describe('/Auth', () => {
         });
     });
   });
+
+  describe('PATCH /api/v1/auth/:userid', () => {
+    beforeEach(() => {
+      User.remove();
+    });
+
+    let userid = '';
+    let token = '';
+
+    const execute = () => request(app)
+      .patch(`/api/v1/user/${userid}`)
+      .set('x-auth-token', token);
+
+    it('should not allow an admin access with no token', async () => {
+      userid = '234567';
+      token = '';
+      const res = await execute();
+      expect(res).to.have.status(401);
+    });
+
+    it('should not allow an admin access with invalid token', async () => {
+      userid = '234567';
+      token = '';
+      const res = await execute();
+      expect(res).to.have.status(401);
+    });
+
+    it('should not change roles of a non existant user', async () => {
+      User.createAdmin({ ...testdata.admin });
+      const admin = User.findByEmail(process.env.ADMIN_EMAIL);
+      token = authHelper.generateToken(admin.id);
+      userid = 2765786;
+      const res = await execute();
+      expect(res).to.have.status(404);
+    });
+
+    it('should check for admin before allowing change of status', async () => {
+      const { user001 } = testdata;
+      const user = User.create({ ...user001});
+      token = authHelper.generateToken(user.id);
+      userid = user.id;
+      const res = await execute();
+      expect(res).to.have.status(403);
+    });
+
+    it('should allow an admin to change a status',async () => {
+      const { user001 } = testdata;
+      const user = User.create({ ...user001 });
+      userid = user.id;
+      User.createAdmin({ ...testdata.admin });
+      const admin = User.findByEmail(process.env.ADMIN_EMAIL);
+      token = authHelper.generateToken(admin.id);
+      const res = await execute();
+      expect(res).to.have.status(200);
+    });
+
+  })
 });

@@ -20,7 +20,7 @@ class Verify {
   }
 
   verifyRegistereduser(req, res, next) {
-    const user = userModel.findByEmail(req.body.email.trim());
+    const user = userModel.findByEmail(req.body.email);
     if (!user) {
       return res.status(400).json({
         status: 400,
