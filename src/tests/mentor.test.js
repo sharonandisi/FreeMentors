@@ -8,7 +8,7 @@ import authHelper from '../helpers/auth';
 
 
 const users = User.users;
-const { expect, request } = chai;
+const { expect} = chai;
 chai.should();
 chai.use(chaiHttp);
 
@@ -18,7 +18,7 @@ describe('/GET  all mentors', () => {
     });
 
     let token = '';
-    const execute = () => request(app)
+    const execute = () => chai.request(app)
           .get('/api/v1/mentors')
           .set('x-auth-token', token);
 
@@ -58,7 +58,7 @@ describe('GET /api/v1/mentors:mentorid', () => {
     let mentorid = '';
     let token = '';
 
-    const execute = () => request(app)
+    const execute = () => chai.request(app)
           .get(`/api/v1/mentors${mentorid}`)
           .set('x-auth-token', token);
     
