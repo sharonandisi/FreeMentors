@@ -19,7 +19,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 /* eslint-disable eol-last */
 var app = (0, _express["default"])();
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 6500;
 app.use(_express["default"].json());
 app.use(_bodyParser["default"].json({
   limit: '50mb'
