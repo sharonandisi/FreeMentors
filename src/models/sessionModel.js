@@ -33,6 +33,10 @@ class Session {
         return this.sessions.filter(session => session.mentorid === id);
     }
 
+    decline(id) {
+        const
+    }
+
     remove() {
         this.sessions = [];
     }

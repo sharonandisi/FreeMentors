@@ -11,7 +11,7 @@ class Session {
     static async createsession(req, res) {
         const menteeid = req.decoded.payload;
         const { mentorid, questions } = req.body;
-        const { id: sessionid, status, menteeEmail } = session.createsession({
+        const { id: sessionid, status, menteeEmail } = session.session({
             mentorid, questions, menteeid });
         res.status(201).json({
             status: 201,
@@ -45,6 +45,24 @@ class Session {
             },
         });
     };
+
+    static async declineRequest(req,res){
+        const { sessionid } = req.params;
+
+        const { mentorid, menteeid, questions, menteeEmail, status} = session.decline(sessionid);
+        res.status(200).json({
+            status: 200,
+            message: 'successful',
+            data: {
+                sessionid,
+                menteeid,
+                mentorid,
+                questions,
+                menteeEmail,
+                status,
+            }
+        })
+    }
 
 }
 
