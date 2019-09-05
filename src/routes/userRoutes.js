@@ -7,6 +7,6 @@ import createAdmin from '../middleware/admin'
 const router = express.Router();
 
 router.post('/signup', Validations.validateSignup, Verify.verifyUser, User.create);
-router.post('/signin', Validations.validateLogin, createAdmin, User.userLogin);
+router.post('/signin', Validations.validateLogin, Verify.verifyRegistereduser, Verify.verifyPassword, createAdmin, User.userLogin);
 router.patch('/:id', Verify.verifyauthenUser, Verify.verifyAdmin, User.changeMentor);
 export default router;

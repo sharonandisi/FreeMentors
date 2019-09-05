@@ -19,7 +19,7 @@ describe('/GET  all mentors', () => {
 
     let token = '';
     const execute = () => chai.request(app)
-          .get('/api/v1/mentors')
+          .get('/api/v1/mentors/mentors')
           .set('x-auth-token', token);
 
     it('should not get mentors when the user has no token', async () => {
@@ -51,7 +51,7 @@ describe('/GET  all mentors', () => {
     });
 });
 
-describe('GET /api/v1/mentors:mentorid', () => {
+describe('GET /api/v1/mentors/mentors/:mentorid', () => {
     beforeEach(() => {
         User.remove();
     });
@@ -59,7 +59,7 @@ describe('GET /api/v1/mentors:mentorid', () => {
     let token = '';
 
     const execute = () => chai.request(app)
-          .get(`/api/v1/mentors${mentorid}`)
+          .get(`/api/v1/mentors/mentors/${mentorid}`)
           .set('x-auth-token', token);
     
     it('should not get a mentor if the user making the request has no token', async () =>{
@@ -82,13 +82,7 @@ describe('GET /api/v1/mentors:mentorid', () => {
         expect(res).to.have.status(404);
     })
 
-    it('should throw an error if there is no mentor found', async () => {
-        const user = User.create({ ...testdata.user001 });
-        token = authHelper.generateToken(user.id);
-        const res = await execute();
-        expect(res).to.have.status(404);
-    })
-
+    
     it('should get a mentor if user is authenticated', async () => {
         const user = User.create({ ...testdata.user001 });
         token = authHelper.generateToken(user.id);

@@ -21,21 +21,16 @@ class Mentor {
     }
 
     static async fetchSpecificMentor(req, res) {
-        const { mentorid: id } = req.params;
-        const user = UserModel.findOne(id);
-        mentor = user.mentorstatus === true;
-        if (!mentor) {
-            return res.status(404).json({
-                status: 404,
-                error: 'Mentor not found'
-            })
-        }
-        if (mentor) {
+        const { mentorid } = req.params;
+        console.log(mentorid);
+        const user = UserModel.findOne(mentorid);
+        if (user && user.mentorstatus) {
             const {
                 id: mentorid, firstname, lastname, email, address, occupation, bio, expertise, mentorstatus, isAdmin
-            } = result;
+            } = user;
             return res.status(200).json({
                 status: 200,
+                message: 'success',
                 data: {
                     mentorid,
                     firstname,

@@ -10,7 +10,7 @@ import Session from '../models/sessionModel';
 chai.use(chaiHttp);
 const { expect,  request } = chai;
 
-describe('POST /api/v1/sessions', () => {
+describe('POST /api/v1/sessions/sessions', () => {
     beforeEach(() => {
         User.remove();
         Session.remove();
@@ -20,13 +20,13 @@ describe('POST /api/v1/sessions', () => {
     let token = '';
 
     const execute = () => request(app)
-          .post('/api/v1/sessions')
+          .post('/api/v1/sessions/sessions')
           .send(session)
           .set('x-auth-token', token);
     it('should not create a session with no mentor', async () => {
         const user = User.create({ ...testdata.user001});
         token = authHelper.generateToken(user.id);
-        session = testdata.session001;
+        session = testdata.session002;
         const res = await execute();
 
         expect(res).to.have.status(400);
@@ -40,12 +40,12 @@ describe ('PATCH /api/v1/sessions/:sessionid/accept', () => {
         Session.remove();
     });
 
+    let sessionid = '';
     let session = {};
     let token = '';
 
     const execute = () => request(app)
-        .patch('/api/v1/sessions/sessions/:sessionid/accept')
-        .send(session)
+        .patch(`/api/v1/sessions/sessions/${sessionid}/accept`)
         .set('x-auth-token', token);
 
     it('should allow a mentor to accept a session ', async () => {
@@ -53,9 +53,9 @@ describe ('PATCH /api/v1/sessions/:sessionid/accept', () => {
         User.changeMentor(mentorid);
         token = authHelper.generateToken(mentorid);
 
-        const { id: menteeid } = User.create({...testdata.user001});
+        const { id: menteeid } = User.create({...testdata.user003});
         const { questions } = testdata.session001;
-        const newSession = Session.create({mentorid, menteeid, questions});
+        const newSession = Session.create({ mentorid, menteeid, questions });
 
         sessionid = newSession.id;
         const res = await execute();
@@ -63,21 +63,21 @@ describe ('PATCH /api/v1/sessions/:sessionid/accept', () => {
     });
 });
 
-describe('PATCH /api/v1/sessions/:sessionid/reject', () => {
+describe('PATCH /api/v1/sessions/sessions/:sessionid/reject', () => {
     beforeEach(() => {
         User.remove();
         Session.remove();
     });
-
-    let session = {};
+    let sessionid = '';
     let token = '';
+    let session = {};
+    
 
     const execute = () => request(app)
-        .patch('/api/v1/sessions/sessions/:sessionid/reject')
-        .send(session)
+        .patch(`/api/v1/sessions/sessions/${sessionid}/reject`)
         .set('x-auth-token', token);
 
-    it('should allow a mentor to accept a session ', async () => {
+    it('should allow a mentor to reject a session ', async () => {
         const { id: mentorid } = User.create({ ...testdata.user001 });
         User.changeMentor(mentorid);
         token = authHelper.generateToken(mentorid);
