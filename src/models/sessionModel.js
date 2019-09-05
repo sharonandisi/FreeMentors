@@ -33,6 +33,22 @@ class Session {
         return this.sessions.filter(session => session.mentorid === id);
     }
 
+    decline(id) {
+        const session = this.sessions.find(sessionobj => sessionobj.id === id);
+        const index = this.sessions.indexOf(session);
+        this.sessions[index].status = 'rejected';
+
+        return this.sessions[index];
+    }
+
+    accept(id) {
+        const session = this.sessions.find(sessionobj => sessionobj.id === id);
+        const index = this.sessions.indexOf(session);
+        this.sessions[index].status = 'accepted';
+
+        return this.sessions[index];
+    }
+
     remove() {
         this.sessions = [];
     }
