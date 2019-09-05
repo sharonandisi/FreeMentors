@@ -7,7 +7,7 @@ import testdata from './mockdata/user'
 import authHelper from '../helpers/auth';
 
 const users = User.users;
-const { expect, request } = chai;
+const { expect } = chai;
 chai.should();
 chai.use(chaiHttp);
 
@@ -20,7 +20,7 @@ describe('/Auth', () => {
           firstname: 'sharon',
           lastname: 'andisi',
           email: 'sharonandisi@gmail.com',
-          password: '123shay',
+          password: 'shayert',
           address: 'nairobi',
           bio: 'mama simi',
           occupation: 'developer',
@@ -227,7 +227,7 @@ describe('/Auth', () => {
         .post('/api/v1/auth/signin')
         .send({
           email: 'sharonandisi@gmail.com',
-          password: '123shay',
+          password: 'shayert',
         })
         .end((err, res) => {
           res.should.have.status(200);
@@ -277,8 +277,8 @@ describe('/Auth', () => {
     let userid = '';
     let token = '';
 
-    const execute = () => request(app)
-      .patch(`/api/v1/user/${userid}`)
+    const execute = () => chai.request(app)
+      .patch(`/api/v1/auth/${userid}`)
       .set('x-auth-token', token);
 
     it('should not allow an admin access with no token', async () => {

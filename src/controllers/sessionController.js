@@ -1,5 +1,5 @@
 import userModel from '../models/userModel';
-import session from '../models/sessionModel';
+import sessionModel from '../models/sessionModel';
 
 class Session {
     /**
@@ -9,11 +9,11 @@ class Session {
       */
 
     static async createsession(req, res) {
-        const menteeid = req.decoded.payload;
+        const menteeid = req.decoded;
         const { mentorid, questions } = req.body;
-        const { id: sessionid, status, menteeEmail } = session.session({
+        const { id: sessionid, status, menteeEmail } = sessionModel.create({
             mentorid, questions, menteeid });
-        res.status(201).json({
+        return res.status(201).json({
             status: 201,
             message: 'Successful',
             data: {
@@ -30,8 +30,13 @@ class Session {
 
     static async acceptRequest(req, res){
         const { sessionid } = req.params;
-
-        const { mentorid, menteeid, questions, menteeEmail, status } = session.accept(sessionid);
+        if(sessionModel.findOne(sessionid).status === 'accepted'){
+            return res.status(409).json({
+                status: 409,
+                error: 'conflict. Session already accepted'
+            })
+        }
+        const { mentorid, menteeid, questions, menteeEmail, status } = sessionModel.accept(sessionid);
         res.status(200).json({
             status: 200,
             message: 'successful',
@@ -48,8 +53,13 @@ class Session {
 
     static async declineRequest(req,res){
         const { sessionid } = req.params;
-
-        const { mentorid, menteeid, questions, menteeEmail, status} = session.decline(sessionid);
+        if (sessionModel.findOne(sessionid).status === 'rejected') {
+            return res.status(409).json({
+                status: 409,
+                error: 'conflict. Session already rejected'
+            })
+        }
+        const { mentorid, menteeid, questions, menteeEmail, status} = sessionModel.decline(sessionid);
         res.status(200).json({
             status: 200,
             message: 'successful',

@@ -56,26 +56,12 @@ class User {
 
   static async userLogin(req, res) {
     const user = UserModel.findByEmail(req.body.email);
-    console.log(user)
     if (!user) {
       return res.status(404).json({
         status: 404,
         error: 'User not found',
       });
     }
-    if (!req.body.email || !req.body.password) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Some values are missing',
-      });
-    }
-    if (!authHelper.isValidEmail(req.body.email)) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Please enter a valid email address',
-      });
-    }
-
     const token = authHelper.generateToken(user.id);
     return res.status(200).json({
       status: 200,

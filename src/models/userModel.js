@@ -82,7 +82,7 @@ class User {
     this.users = [];
   }
 
-  findAdmin() {
+  findAdmin(id) {
     return this.users.find((user) => user.isAdmin === true);
   }
 }

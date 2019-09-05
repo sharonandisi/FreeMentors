@@ -25,6 +25,17 @@ const User = {
         is_Admin: 'false',
     },
 
+    user003: {
+        firstname: 'shaon',
+        lastname: 'andsi',
+        email: 'sharonndisi@gmail.com',
+        password: 'shay123',
+        address: 'nairobi',
+        occupation: 'mama',
+        bio: 'I am a dev mama',
+        expertise: 'motherhood',
+    },
+
     admin: {
         firstname: 'admin',
         lastname: 'admin',
@@ -38,6 +49,10 @@ const User = {
 
     session001: {
         mentorid: 329329,
+        questions: 'How to do you create cat videos?'
+
+    },
+    session002: {
         questions: 'How to do you create cat videos?'
 
     },
