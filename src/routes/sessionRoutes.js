@@ -6,5 +6,6 @@ const router = express.Router();
 
 router.post('/sessions', Verify.verifyauthenUser,Session.createsession);
 router.patch('/sessions/:sessionid/accept', Verify.verifyauthenUser, Verify.verifymentor, Verify.verifysession, Session.acceptRequest);
+router.patch('/sessions/:sessionid/decline', Verify.verifyauthenUser, Verify.verifymentor, Verify.verifysession, Session.declineRequest);
 
 export default router;

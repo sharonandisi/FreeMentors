@@ -61,4 +61,6 @@ describe ('PATCH /api/v1/sessions/:sessionid', () => {
         const res = await execute();
         expect(res).to.have.status(200);
     });
+
+    
 });
