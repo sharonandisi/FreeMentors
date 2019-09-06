@@ -97,9 +97,9 @@ class Verify {
   }
 
   checkmentorStatus(req, res, next) {
-    const { mentorid } = req.body;
-    const mentor = userModel.findOne(mentorid);
-    if (!mentor || mentor.mentorstatus !== 'true') {
+    const mentor = userModel.findOne(req.body.mentorid);
+
+    if (!mentor.mentorstatus) {
       return res.status(400).json({
         status: 400,
         error: 'Mentor status not activated',

@@ -2,20 +2,17 @@ import Joi from '@hapi/joi';
 import response from '../helpers/responses';
 
 class Validations {
-static async validateSession(req, res, next) {
-   try { const schema = {
-        mentorid: Joi.string()
-            .min(3)
-            .max(20)
-            .required()
-            .error(() => 'mentorid is a required field'),
-        questions: Joi.string()
-            .min(3)
-            .max(15)
-            .required()
-            .error(() => 'Firstname is required with a min of 3 chars and no special chars or numbers'),
+    static async validateSession(req, res, next) {
+        try { 
+            const schema = {
+            questions: Joi.string()
+                 .trim()
+                 .min(3)
+                 .max(15)
+                 .required()
+                 .error(() => 'Question is a required with a min of 3 chars and no special chars or numbers'),
     };
-    const { error } = Joi.validate(req.body, schema);
+    const { error } = Joi.validate(req.questions, schema);
 
 if (error) {
     return response.validationsError(400, error.details[0].message, res);
