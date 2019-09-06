@@ -26,7 +26,7 @@ class User {
       bio: bio.trim(),
       expertise: expertise.trim(),
     });
-    const token = authHelper.generateToken(user.id);
+    const token = authHelper.generateToken({id:user.id});
     return res.status(201).json({
       status: 201,
       message: 'successful',
@@ -62,7 +62,7 @@ class User {
         error: 'User not found',
       });
     }
-    const token = authHelper.generateToken(user.id);
+    const token = authHelper.generateToken({id:user.id});
     return res.status(200).json({
       status: 200,
       message: 'user is successfully logged in',
