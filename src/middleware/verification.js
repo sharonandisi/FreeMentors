@@ -36,8 +36,8 @@ class Verify {
   verifyPassword(req, res, next) {
     const user =  userModel.findByEmail(req.body.email);
     if (!authHelper.comparePassword(user.password, req.body.password)) {
-      return res.status(400).json({
-        status: 400,
+      return res.status(401).json({
+        status: 401,
         error: 'Please enter a valid password',
       });
     }
@@ -97,9 +97,9 @@ class Verify {
   }
 
   checkmentorStatus(req, res, next) {
-    const { mentorid } = req.body;
-    const mentor = userModel.findOne(mentorid);
-    if (!mentor || mentor.mentorstatus !== 'true') {
+    const mentor = userModel.findOne(req.body.mentorid);
+
+    if (!mentor.mentorstatus) {
       return res.status(400).json({
         status: 400,
         error: 'Mentor status not activated',
