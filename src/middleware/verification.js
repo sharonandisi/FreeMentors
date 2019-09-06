@@ -36,8 +36,8 @@ class Verify {
   verifyPassword(req, res, next) {
     const user =  userModel.findByEmail(req.body.email);
     if (!authHelper.comparePassword(user.password, req.body.password)) {
-      return res.status(400).json({
-        status: 400,
+      return res.status(401).json({
+        status: 401,
         error: 'Please enter a valid password',
       });
     }
