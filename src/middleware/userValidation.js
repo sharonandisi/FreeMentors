@@ -6,42 +6,50 @@ class Validations {
     try {
       const schema = {
         firstname: Joi.string()
+          .trim()
           .min(3)
           .max(15)
           .required()
           .error(() => 'Firstname is required with a min of 3 chars and no special chars or numbers'),
         lastname: Joi.string()
+          .trim()
           .min(3)
           .max(15)
           .required()
           .error(() => 'Lastname is required with a min of 3 chars and no special chars or numbers'),
         password: Joi.string()
+          .trim()
           .min(5)
           .max(15)
           .alphanum()
           .required()
           .error(() => 'Password is a required field with a min of 5 chars and no special chars'),
         address: Joi.string()
+          .trim()
           .alphanum()
           .min(5)
           .max(50)
           .required()
           .error(() => 'Address is a required field with a min of 3 chars'),
         email: Joi.string()
+          .trim()
           .email({ minDomainSegments: 2 })
           .required()
           .error(() => 'Email is a required and must be valid'),
         occupation: Joi.string()
+          .trim()
           .min(5)
           .max(50)
           .required()
           .error(() => 'Occupation is a required field with a min of 3 chars with no special chars and numbers'),
         bio: Joi.string()
+          .trim()
           .min(5)
           .max(50)
           .required()
           .error(() => 'Bio is a required field with a min of 5 chars with no special chars or numbers'),
         expertise: Joi.string()
+          .trim()
           .min(5)
           .max(50)
           .required()
@@ -68,10 +76,12 @@ class Validations {
     try {
       const schema = {
         email: Joi.string()
+          .trim()
           .email({
             minDomainSegments:2 }).required()
           .error(() => 'Email is a required field and must be valid'),
         password: Joi.string()
+          .trim()
           .min(5)
           .max(15)
           .alphanum()
