@@ -111,3 +111,11 @@ button:hover {
 .step.finish {
   background-color: #4CAF50;
 }
+
+.container{
+  color: white;
+}
+
+.container a {
+  color: greenyellow;
+}
